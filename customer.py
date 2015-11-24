@@ -68,6 +68,7 @@ for line in claim_lines:
                         'product_delivered', [line])
             oerp.execute('claim.line',
                         'receive_from_workshop', [line])
+            good += 1
         except:
             print "Case#2 claim_line %s has prodlot and the lot of move is False" % name
             print line_brw.prodlot_id, lot
@@ -81,7 +82,6 @@ for line in claim_lines:
                         'product_delivered', [line])
             oerp.execute('claim.line',
                         'receive_from_workshop', [line])
-            print "Good \n"
             good += 1
         except:
             print "Case#3 claim_line %s I don't know" % name
