@@ -42,6 +42,7 @@ claim_lines = cl_obj.search([('state', '=', 'diagnosed'), ])
 different = 0
 all_false = 0
 do_not_know = 0
+good = 0
 for line in claim_lines:
     line_brw = cl_obj.browse(line)
 
@@ -81,6 +82,7 @@ for line in claim_lines:
             oerp.execute('claim.line',
                         'receive_from_workshop', [line])
             print "Good \n"
+            good += 1
         except:
             print "Case#3 claim_line %s I don't know" % name
             print line_brw.prodlot_id, lot
@@ -91,4 +93,5 @@ for line in claim_lines:
 print "Case#1 %s cases of claim_line has prodlot different to the lot of move" % str(different)
 print "Case#2 %s claim_line has prodlot and the lot of move is False" % str(all_false)
 print "Case#3 %s claim_line I don't know" % str(do_not_know)
+print "GOODS! %s" % str(good)
 print "%s Total" % str(len(claim_lines))
